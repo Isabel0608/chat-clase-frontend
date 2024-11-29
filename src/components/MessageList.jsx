@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function MessageList({ messages }) {
     return (
       <>
@@ -15,7 +17,24 @@ export default function MessageList({ messages }) {
               wordWrap: "break-word",
               lineHeight: "1.5", 
               fontFamily: "'Arial', sans-serif", 
+              display: "flex",
+              justifyContent: "flex-start", 
+              alignItems: "center",
+
             }}>
+             <Image
+             src={message.author.profile_picture != null 
+                ? `https://chat-app-two-sandy-21.vercel.app${message.author.profile_picture}` 
+                : "img/no-foto.jpg"}
+               width={50}
+               height={50}
+               style={{ borderRadius: "100%", objectFit: "cover" }}
+               quality={100}
+               priority={true}
+               unoptimized
+               alt="perfil"
+/>
+
               <span style={{
                 color: "#9c4dcc", 
                 fontSize: "1.1em",

@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     env: {
-        API_URL: "https://chat-app-two-sandy-21.vercel.app/api/chat/"
+        API_URL: "https://chat-clase-frontend-seven.vercel.app/api/chat/ "
+    },
+    images:{ 
+        remotePatterns: {
+            protocol: "https",
+            hostname: "hat-clase-frontend-seven.vercel.app",
+            pathname: "/media/profile_pictures/**"
+        }
     }
 };
 

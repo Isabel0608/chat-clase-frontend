@@ -9,6 +9,7 @@ export default function ChatPage() {
 
     const [messages, setMessages] = useState([])
     const [username, setUsername] = useState("")
+    const [showprofileModal, setShowProfileModal] = useState(false);
 
     async function fetchMessages() {
         try {
@@ -29,7 +30,22 @@ export default function ChatPage() {
 
     return (
         <>
-            <div>Chat de {username}</div>
+           <div style={{display: "flex", alignContent:"center" }}>
+             <div>Chat de {username}</div>
+             <div style={{marginLeft: "auto"}}>
+                <button onClick={()=> setShowProfileModal(true)}>Editar perfil</button>
+                {
+                    showprofileModal && (
+                        <profileEditModal
+                        username={username}
+                        onClose={() => setShowProfileModal(false)}
+                        onProfileUpdated={fetchMessages}
+                        />
+                    )
+                }
+                <profileEditModal></profileEditModal>
+             </div>
+            </div>
             <MessageList messages={messages}></MessageList>
             <MessageForm onMessageSent={fetchMessages}></MessageForm>
         </>
